@@ -1,60 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+MX:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&family=Playwrite+MX:wght@100..400&display=swap');
+
+
+
+ :root{
+  /* background-color:*/
+
+  --color_red: rgb(255, 4, 4);
+  --color_header:rgba(255, 255, 255, 0.336);
+  --color_formulario: rgba(0, 0, 0, 0.733);
+  --color_card: rgb(0,61,61);
+  /* color letras */
+  --color_texto_blanco: rgb(255, 255, 255);
+  --color_texto_negro: rgb(0, 0, 0);
+
+  /* fuentes */
+  --fuente_sec:  font-family: "Playwrite MX", cursive;
+
+  /* botones */
+  --boton_color_enviar:rgb(132, 255, 132) ; 
+  --input_border_color:rgba(8, 8, 8, 0.315);
+ }
+ body{
+  margin: 0;
+ }
+ header{
+  
+  border-bottom: 5px;
+  border-bottom-style:groove ;  
+  margin-bottom: 2rem;
+  font-family: "Playwrite MX", cursive;
+  font-optical-sizing: auto;
+ }
+
  .datos_personales{
-  height: 10rem;
-  width: 30%;
-  background-color: rgb(0, 0, 0);
+  height: 20rem;
+  width: 100%;
+  background-color: var(--color_header);
+  
+}
+.datos_personales form{
+  background-color: transparent;
+  color: var(--color_texto_negro) ;
+  width: 20rem;
+  border-style: groove;
   padding: 1rem;
-  border-radius: 5px;
 }
+
 .sect1{
-  background-color: bisque;
   margin-bottom: 3rem;
+  
 }
-.datos_personales input {
-  width: 90%;
-}
+
 .centrado {
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
-.datos_personales label {
-  color: rgb(255, 255, 255);
-  font-size: large;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+
+.fotografia {
+  width:  150px;
+  border-radius: 100%;
+  height: 150px;
+  /* encajar imagen en el circulo */
+  object-fit: cover;
+  margin-left: auto;
 }
-.datos_personales button {
-  border-radius: 5px;
+.buscar{
+  margin-bottom: 2rem;
+  width: 100%;
+}
+.buscar article {
+  background-color: var(--color_header);
+  color: var(--color_texto_negro);
+  height: 5rem;
+  width: 100%;
+}
+
+.formulario{
+  color: var(--color_texto_blanco);
+  font-family: var(--fuente_sec);
+  font-size: 20px;
+  background-color:var(--color_formulario) ;
+  border-style: none;
+  border-radius: 20px;
+}
+.formulario input {
+  border-style: none;
+  width: 99%;
   height: 1.5rem;
-  margin-top: 5px;
-  width: 91%;
- 
+  border-radius: 5px;
 }
-.datos_personales button:hover{
-  background-color:rgb(170, 236, 170) ;
+.formulario button {
+  border-style: none;
+  background-color: var(--boton_color_enviar);
+  border-radius: 5px;
+  height: 2rem;
+  margin-top: 10px;
+  width: 100%; 
+}
+.formulario button:hover{
+  background-color:rgb(0, 255, 0) ;
   border-color: white;
 
 }
-.agenda {
-  width: 80%;
-  display: flex;
-  background-color: aqua;
-  height: 60rem;
-}
+
+
 .container {
-  width: 20rem;
-  height: 25rem;
+  max-width: 100%;
+  width: 15%;
+  height: 20rem;
   margin: 5px;
-  background-color: rgb(255, 255, 255);
-  border-style: groove;
-  border-color: black;
-  border-radius: 1rem;
+  background-color: var(--color_card);
   padding: 1rem;
   overflow: hidden;
 
 }
-.fotografia {
-  width:  200px;
-  border-radius: 100%;
-  height: 200px;
+.container-header {
+  /* max-width: fit-content; */
+  padding: 0;
+  width: 100%;
+  background-color: var(--color_header);
+  display: flex;
 }
+.agenda {
+  padding: 2rem;  
+  /* width: 100%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* background-color: aqua; */
+  height: auto;
+}
+.buscar input {
+  border-style: groove;
+  border-color:var(--input_border_color) ;
+}
+.datos_personales input{
+  border-style: groove;
+  border-color:var(--input_border_color) ;
+}
+/* dialog */
+#confEditar{
+  width: 30%;
+  
+}
+

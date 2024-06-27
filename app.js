@@ -27,7 +27,7 @@ class Agenda {
     buscar(){
         let patron = document.getElementById('patronContent').value.toLowerCase()
         let patronType = document.getElementById('patronType').value
-        // console.log(patron)
+        console.log(patron)
         
         // patron a buscar
         this.cargarElementos(patron,patronType)
@@ -36,7 +36,7 @@ class Agenda {
     }
 
     cargarElementos (patron,patronType) {
-        const contenedor = document.getElementById('container')
+        const contenedor = document.getElementById('agenda')
         contenedor.innerHTML = ''
 
         let contador = 0
@@ -65,31 +65,33 @@ class Agenda {
             
             }
             if(!patron || encontrada){
-
-            const elemento = ` <article class="container" >
-            <div class="card-header bg-amarillo">  
-            <h1>${element.name}</h1><img class='fotografia' src="${element.image}" alt="fotografia">
-            </div>
-            <div class="card-body">
-            <p><b>Teléfono</b><br>${element.phone}</p>
-            </div>
-            <div class="card-footer">
-            <button onclick=agenda.Borrar(${contador}) class="material-button material-button--outlined">Borrar</button>
-            <button onclick="agenda.Editar(${contador})" class="material-button material-button--outlined">Editar</button>
-            </div>
-             </article>`
-             contenedor.innerHTML+=elemento
+                
+                const elemento = ` <article class='formulario container'>
+                <div class='container-header'>
+                <h1>${element.name}</h1>
+                <img class='fotografia' src="${element.image}" alt="fotografia">
+                </div>
+                <div>
+                <p><b>Teléfono</b><br>${element.phone}</p>
+                </div>
+                <div>
+                <button onclick=agenda.Editar(${contador})>Editar</button>
+                <button onclick=agenda.Borrar(${contador})>Borrar</button>
+                </div>
+                </article>
+                `
+                contenedor.innerHTML+=elemento
             }
             contador++
-    }
-        )
-    }
+        }
+    )
+}
 
-    Borrar(element) {
-        const confBorrar = document.getElementById('confBorrar')
-        const confBorrarTrue = document.getElementById('confBorrarTrue')
-        const confBorrarFalse = document.getElementById('confBorrarFalse')
-        confBorrar.showModal()
+Borrar(element) {
+    const confBorrar = document.getElementById('confBorrar')
+    const confBorrarTrue = document.getElementById('confBorrarTrue')
+    const confBorrarFalse = document.getElementById('confBorrarFalse')
+    confBorrar.showModal()
         confBorrarTrue.onclick = () => {
             this.lista.splice(element,1)
             this.guardarDatos()

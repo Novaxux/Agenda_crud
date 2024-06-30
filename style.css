@@ -111,7 +111,7 @@
 
 .container {
   max-width: 100%;
-  width: 15%;
+  width: 250px;
   height: 20rem;
   margin: 5px;
   background-color: var(--color_card);
@@ -121,7 +121,7 @@
 }
 
 .container-header {
-  /* max-width: fit-content; */
+  
   padding: 0;
   width: 100%;
   background-color: var(--color_header);
@@ -129,7 +129,8 @@
 }
 .agenda {
   padding: 2rem;  
-  /* width: 100%; */
+  max-width: 96%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

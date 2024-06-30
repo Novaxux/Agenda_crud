@@ -25,7 +25,7 @@
   margin: 0;
  }
  header{
-  
+  width: 100%;
   border-bottom: 5px;
   border-bottom-style:groove ;  
   margin-bottom: 2rem;
@@ -130,7 +130,6 @@
 .agenda {
   padding: 2rem;  
   max-width: 96%;
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

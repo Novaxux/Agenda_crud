@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header class="centrado">
+        <h1>Agenda</h1>
+    </header>
+    
+    <main>
+        
+        <section class="sect1 " >
+            <article class="datos_personales centrado">
+                <form class="formulario " id="agregarForm">
+                    <h2 class="centrado">Agregar</h2>
+                    <label for="">Nombre</label>
+                    <input type="text" name="" id="name" required>
+                    <label for="">Imagen</label>
+                    <input type="text" name="" id="image" required>
+                    <label for="">Telefono</label>
+                    <input type="number" name="" id="phone" required>
+                    <button type="submit">Agregar</button>
+                </form>
+            </article>
+        </section>
+        <section class="buscar centrado">
+            <article class="centrado formulario">
+                <form class="centrado" id="patron">
+                    <label for="buscar">Buscar</label>
+                    <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="patron" id="patronType">
+                        <option value="name">Nombre</option>
+                        <option value="image">Imagen</option>
+                        <option value="phone">Teléfono</option>
+                    </select>
+                    <input name="buscar" type="text" id="patronContent">
+                </form>
+            </article>
+        </section>
+     
+        <section class="agenda" id="agenda">
+                    
+        </section>
+        
+        <dialog id="confBorrar" class="formulario">
+                <h2>¿Estas seguro que desea elimarlo?</h2>
+                <button id="confBorrarTrue">confirmar</button>
+                <button id="confBorrarFalse">cancelar</button>
+        </dialog>
+    
+        <dialog id="confEditar" class="formulario">
+                <h2>Editar</h2>
+                <label for="">Nombre</label>
+                <input type="text" name="" id="ename" required>
+                <label for="">Imagen</label>
+                <input type="text" name="" id="eimage" required>
+                <label for="">Telefono</label>
+                <input type="number" name="" id="ephone" required>
+                <button id="confEditarTrue">confirmar</button>
+                <button id="confEditarFalse">cancelar</button>
+        </dialog>
+
+    </main>
+
+    
+    <script src="app.js"></script>
+</body>
+</html>

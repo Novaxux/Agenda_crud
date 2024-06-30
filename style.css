@@ -145,10 +145,7 @@
   border-color:var(--input_border_color) ;
 }
 /* dialog */
-#confEditar{
-  width: 30%;
-  
-}
+
 
 .login{
   width: 30%;
@@ -159,4 +156,9 @@
 
 .seccion-login {
   height: 50rem;
+}
+
+dialog{
+  width: 30rem;
+  max-width: 80%;
 }

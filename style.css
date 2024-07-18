@@ -7,9 +7,10 @@
   /* background-color:*/
 
   --color_red: rgb(255, 4, 4);
-  --color_header:rgba(255, 255, 255, 0.336);
+  --color_header:rgba(134, 255, 241, 0.481);
   --color_formulario: rgba(0, 0, 0, 0.733);
   --color_card: rgb(0,61,61);
+  --main_color: rgba(186, 255, 237, 0.407);
   /* color letras */
   --color_texto_blanco: rgb(255, 255, 255);
   --color_texto_negro: rgb(0, 0, 0);
@@ -24,11 +25,13 @@
  body{
   margin: 0;
  }
+ 
  header{
   width: 100%;
   border-bottom: 5px;
-  border-bottom-style:groove ;  
-  margin-bottom: 2rem;
+  border-bottom-style:groove ; 
+  background-color: var(--color_header); 
+  /* margin-bottom: 2rem; */
   font-family: "Playwrite MX", cursive;
   font-optical-sizing: auto;
  }
@@ -162,3 +165,7 @@ dialog{
   width: 30rem;
   max-width: 80%;
 }
+main{
+  background-color: var(--main_color);
+  padding-top: 2rem;
+ }

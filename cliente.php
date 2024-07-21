@@ -63,6 +63,18 @@ function eliminarCliente($idCliente) {
     }
 }
 
+function editarCliente( $idCliente ,$nombre, $telefono, $urlFoto) {
+    global $conn;
+    $sql = "UPDATE clientes SET nombre='$nombre', telefono='$telefono', url_foto='$urlFoto' WHERE id = $idCliente";
+    
+    if ($conn->query($sql) === TRUE) {
+        return array('status' => 'success', 'message' => 'Cliente editado exitosamente');
+    } else {
+        return array('status' => 'error', 'message' => 'Error al editar el cliente: ' . $conn->error);
+    }
+}
+
+
 $accion = isset($_GET['accion']) ? $_GET['accion'] : '';
 
 switch ($accion) {
@@ -84,13 +96,20 @@ switch ($accion) {
     case 'eliminarCliente':
         $idCliente = $_GET['idCliente'];
         
-        if (eliminarCliente($idCliente)) {
-            echo "Cliente eliminado exitosamente";
-        } else {
-            echo "Error al eliminar el cliente";
-        }
+        $response = eliminarCliente($idCliente);
+        echo json_encode($response);
         break;
-
+        
+    case 'editarCliente':
+        $idCliente = $_GET['id'];
+        $nombre = $_GET['nombre'];
+        $telefono = $_GET['telefono'];
+        $urlFoto = $_GET['url_foto'];
+        
+        $response =editarCliente($idCliente, $nombre,$telefono,$urlFoto);
+        echo json_encode($response);
+       
+        break;
     default:
         echo json_encode(array('status' => 'error', 'message' => 'Acción no válida'));
 }

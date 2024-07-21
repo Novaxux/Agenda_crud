@@ -16,7 +16,7 @@ class Agenda {
     constructor(){
         this.baseApi = 'http://localhost/Agenda_repaso/cliente.php';
         // el id del usuario
-        this.userId = JSON.parse(localStorage.getItem('authUser')).id;
+        this.userId = JSON.parse(localStorage.getItem('authUser'));
         // parametros a buscar
         this.params = null;
         this.list = [];
@@ -36,6 +36,8 @@ class Agenda {
           if (data.message){
             console.log(data.message);
             alert(data.message); // Show success 
+            this.cargarClientes()
+
           }
            else if(data.data){
             console.log('lista actualizada')
@@ -93,7 +95,6 @@ class Agenda {
       });
       const url = `${this.baseApi}?accion=obtenerClientes&${this.params.toString()}`;
 
-        // await this.fetchData(url)
         await this.fetchData(url)
     }
 
@@ -101,7 +102,7 @@ class Agenda {
       
         const contenedor = document.getElementById('agenda')
         contenedor.innerHTML = ''
-        
+        let encontrada
 
      
         console.log(this.list)
@@ -109,17 +110,17 @@ class Agenda {
 
             switch (patronType){
                 case 'name':
-                nombre = this.list[index].nombre.toLowerCase()
-                encontrada = nombre.includes(patron)
+                    let nombre = this.list[index].nombre.toLowerCase()
+                    encontrada = nombre.includes(patron)
                 break
 
                 case 'image':
-                    url_foto = this.list[index].url_foto.toLowerCase()
+                    let url_foto = this.list[index].url_foto.toLowerCase()
                     encontrada = url_foto.includes(patron)
                 break
 
                 case 'phone':
-                    telefono = this.list[index].telefono.toLowerCase()
+                    let telefono = this.list[index].telefono.toLowerCase()
                     encontrada = telefono.includes(patron)
                 break
             
@@ -147,53 +148,68 @@ class Agenda {
     )
     }
   
-//     Borrar(element) {
-//     const confBorrar = document.getElementById('confBorrar')
-//     const confBorrarTrue = document.getElementById('confBorrarTrue')
-//     const confBorrarFalse = document.getElementById('confBorrarFalse')
-//     confBorrar.showModal()
-//         confBorrarTrue.onclick = () => {
-//             this.list.splice(element,1)
-//             this.guardarDatos()
-//             this.cargarElementos()
-//             confBorrar.close()
+    Borrar(element) {
+    const confBorrar = document.getElementById('confBorrar')
+    const confBorrarTrue = document.getElementById('confBorrarTrue')
+    const confBorrarFalse = document.getElementById('confBorrarFalse')
+    const idCliente = this.list[element].id
+    
 
-//         }
-//         confBorrarFalse.onclick = () => {
-//             confBorrar.close()
-//         }
-//     }
+    confBorrar.showModal()
+        confBorrarTrue.onclick = async() => {
+            this.params = new URLSearchParams({
+                idCliente: idCliente
+            });
+            const url = `${this.baseApi}?accion=eliminarCliente&${this.params.toString()}`;
+            console.log(url)
+            await this.fetchData(url)
+            this.cargarClientes()
+            confBorrar.close()
+        }
+        confBorrarFalse.onclick = () => {
+            confBorrar.close()
+        }
+    }
    
    
-//    Editar(element) {
-//        const confEditar = document.getElementById('confEditar')
-//        const confEditarTrue = document.getElementById('confEditarTrue')
-//        const confEditarFalse = document.getElementById('confEditarFalse')
-//     //    valor del elemento al editar
-//         document.getElementById('ename').value = this.list[element].name
-//         document.getElementById('eimage').value = this.list[element].image
-//         document.getElementById('ephone').value = this.list[element].phone
+   Editar(element) {
+        const idCliente = this.list[element].id
 
-//     //    Abrir el modal
-//        confEditar.showModal()
+       const confEditar = document.getElementById('confEditar')
+       const confEditarTrue = document.getElementById('confEditarTrue')
+       const confEditarFalse = document.getElementById('confEditarFalse')
+    //    valor del elemento al editar
+        document.getElementById('ename').value = this.list[element].nombre
+        document.getElementById('eimage').value = this.list[element].url_foto
+        document.getElementById('ephone').value = this.list[element].telefono
 
-//     //    guardar datos
-//        confEditarTrue.onclick = () => {
+    //    Abrir el modal
+       confEditar.showModal()
 
-//         this.list[element].name = document.getElementById('ename').value
-//         this.list[element].image = document.getElementById('eimage').value
-//         this.list[element].phone = document.getElementById('ephone').value
+    //    guardar datos
+       confEditarTrue.onclick = async() => {
+        const data = []
+        data.nombre = document.getElementById('ename').value
+        data.url_foto = document.getElementById('eimage').value
+        data.telefono = document.getElementById('ephone').value
+        console.log(data)
         
-//            this.guardarDatos()
-//            this.cargarElementos()
-        
-//         confEditar.close()
-//     }
-//        confEditarFalse.onclick = () => {
-//            confEditar.close()
+        this.params = new URLSearchParams({
+            ...data,
+            id : idCliente
+        });
 
-//         }
-//     }
+        const url = `${this.baseApi}?accion=editarCliente&${this.params.toString()}`;
+  
+          await this.fetchData(url)
+        
+        confEditar.close()
+    }
+       confEditarFalse.onclick = () => {
+           confEditar.close()
+
+        }
+    }
 }
 const agenda = new Agenda()
 

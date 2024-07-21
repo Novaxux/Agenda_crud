@@ -14,7 +14,7 @@ document.getElementById('login_form').addEventListener('submit',function login (
                     //alert('Inicio de sesión exitoso');
                     // Redirigir a una página protegida o realizar alguna acción adicional
                     // Almacena los datos del usuario en el Almacenamiento Web
-                    localStorage.setItem('authUser', JSON.stringify(data.data));
+                    localStorage.setItem('authUser', JSON.stringify(data.data.id));
                     // Redirige al usuario a la página de inicio
                     window.location.href = 'app.html';
                 } else {

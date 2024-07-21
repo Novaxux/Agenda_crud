@@ -59,9 +59,9 @@ class Agenda {
 
     
     }
-    guardarDatos() {
-        localStorage.setItem('list', JSON.stringify(this.list));
-      }
+    // guardarDatos() {
+    //     localStorage.setItem('list', JSON.stringify(this.list));
+    //   }
     async agregarContacto(name, phone, image){
         // la data del cliente a agrgar
         const clientData = new contacto (name,phone,image) 

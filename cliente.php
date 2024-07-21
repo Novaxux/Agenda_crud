@@ -12,7 +12,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verificar la conexión
 if ($conn->connect_error) {
-    $response = array(
+    $response = array(  
         'status' => 'error',
         'message' => 'Error de conexión: ' . $conn->connect_error
     );

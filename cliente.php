@@ -52,6 +52,17 @@ function obtenerClientes($id_usuario) {
     
 }   
 
+function eliminarCliente($idCliente) {
+    global $conn;
+    $sql = "DELETE FROM clientes WHERE id = $idCliente";
+    
+    if ($conn->query($sql) === TRUE) {
+        return array('status' => 'success', 'message' => 'Cliente borrado exitosamente');
+    } else {
+        return array('status' => 'error', 'message' => 'Error al borrar el cliente: ' . $conn->error);
+    }
+}
+
 $accion = isset($_GET['accion']) ? $_GET['accion'] : '';
 
 switch ($accion) {
@@ -70,6 +81,15 @@ switch ($accion) {
         echo json_encode($clientes);
         break;
     
+    case 'eliminarCliente':
+        $idCliente = $_GET['idCliente'];
+        
+        if (eliminarCliente($idCliente)) {
+            echo "Cliente eliminado exitosamente";
+        } else {
+            echo "Error al eliminar el cliente";
+        }
+        break;
 
     default:
         echo json_encode(array('status' => 'error', 'message' => 'Acción no válida'));

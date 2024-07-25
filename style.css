@@ -7,8 +7,8 @@
   /* background-color:*/
 
   --color_red: rgb(255, 4, 4);
-  --color_header:rgba(134, 255, 241, 0.481);
-  --color_formulario: rgba(0, 0, 0, 0.733);
+  --color_header:rgba(11, 220, 21, 0.362);
+  --color_formulario: rgba(255, 255, 255, 0.733);
   --color_card: rgb(0,61,61);
   --main_color: rgba(186, 255, 237, 0.407);
   /* color letras */
@@ -22,9 +22,15 @@
   --boton_color_enviar:rgb(132, 255, 132) ; 
   --input_border_color:rgba(8, 8, 8, 0.315);
  }
- body{
+ html, body {
+  min-height: 100%;
+  height:55rem;
+  max-height: 100%;
   margin: 0;
- }
+  padding: 0;
+  background-color: var(--main_color);
+  /* padding-top: 2rem; */
+}
  
  header{
   width: 100%;
@@ -39,7 +45,6 @@
  .datos_personales{
   height: 20rem;
   width: 100%;
-  background-color: var(--color_header);
   
 }
 .datos_personales form{
@@ -83,20 +88,23 @@
 }
 
 .formulario{
-  color: var(--color_texto_blanco);
+  color: var(--color_texto_negro);
   font-family: var(--fuente_sec);
   font-size: 20px;
+  -webkit-box-shadow: -17px 17px 10px 0px rgba(0,0,0,0.59);
+-moz-box-shadow: -17px 17px 10px 0px rgba(0,0,0,0.59);
+box-shadow: -17px 17px 10px 0px rgba(0,0,0,0.59); 
   background-color:var(--color_formulario) ;
   border-style: none;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 .formulario input {
-  border-style: none;
+  /* border-style: none; */
   width: 99%;
   height: 1.5rem;
   border-radius: 5px;
 }
-.formulario button {
+ button {
   border-style: none;
   background-color: var(--boton_color_enviar);
   border-radius: 5px;
@@ -117,7 +125,7 @@
   width: 250px;
   height: 20rem;
   margin: 5px;
-  background-color: var(--color_card);
+  /* background-color: var(--color_card); */
   padding: 1rem;
   overflow: hidden;
 
@@ -151,21 +159,31 @@
 
 
 .login{
-  width: 30%;
+  width: 30rem;
+  max-width: 90%;
   height: 15rem;
   padding: 1rem;
   margin: auto;
 }
 
 .seccion-login {
-  height: 50rem;
+  height: 55rem;
+  max-height: 100%;
 }
 
 dialog{
   width: 30rem;
   max-width: 80%;
 }
-main{
+/* main{
+  
   background-color: var(--main_color);
   padding-top: 2rem;
+ } */
+
+ .logout{
+  width: 20%;
+ }
+ .sect-logout{
+  padding: 2rem;
  }

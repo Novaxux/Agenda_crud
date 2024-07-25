@@ -16,7 +16,7 @@ class Agenda {
     constructor(){
         this.baseApi = 'http://localhost/Agenda_repaso/cliente.php';
         // el id del usuario
-        this.userId = JSON.parse(localStorage.getItem('authUser'));
+        this.userId = JSON.parse(localStorage.getItem('authUser')).id;
         // parametros a buscar
         this.params = null;
         this.list = [];
@@ -61,9 +61,7 @@ class Agenda {
 
     
     }
-    // guardarDatos() {
-    //     localStorage.setItem('list', JSON.stringify(this.list));
-    //   }
+   
     async agregarContacto(name, phone, image){
         // la data del cliente a agrgar
         const clientData = new contacto (name,phone,image) 
@@ -88,7 +86,23 @@ class Agenda {
         
        
     }
+    cerrarSesion(){
+    const confClose = document.getElementById('confClose')
+    const confCloseTrue = document.getElementById('confCloseTrue')
+    const confCloseFalse = document.getElementById('confCloseFalse')
+    
 
+    confClose.showModal()
+        confCloseTrue.onclick = () => {
+            localStorage.removeItem('authUser');
+            window.location.href= 'index.html';
+            confClose.close()
+        }
+        confCloseFalse.onclick = () => {
+            confClose.close()
+        }
+   
+    }
     async cargarClientes(){
       this.params = new URLSearchParams({
           idUsuario: this.userId
@@ -99,7 +113,7 @@ class Agenda {
     }
 
     cargarElementos (patron,patronType) {
-      
+        
         const contenedor = document.getElementById('agenda')
         contenedor.innerHTML = ''
         let encontrada
@@ -229,3 +243,7 @@ document.getElementById('agregarForm').addEventListener('submit', function agreg
 document.getElementById('patronContent').addEventListener('keyup',function(){
     agenda.buscar()
 })
+
+document.getElementById('closeSesion').onclick = () => {
+    agenda.cerrarSesion()
+}

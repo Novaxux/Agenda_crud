@@ -13,7 +13,12 @@
     </header>
     
     <main>
-        
+        <section class=" sect-logout centrado">
+            <article class="logout">
+                <button id="closeSesion">Cerrar sesión</button>
+            </article>
+
+        </section>
         <section class="sect1 " >
             <article class="datos_personales centrado">
                 <form class="formulario " id="agregarForm">
@@ -26,10 +31,12 @@
                     <input type="number" name="" id="phone" required>
                     <button type="submit">Agregar</button>
                 </form>
-            </article>
+            </article>  
+
+            
         </section>
         <section class="buscar centrado">
-            <article class="centrado formulario">
+            <article class="centrado ">
                 <form class="centrado" id="patron">
                     <label for="buscar">Buscar</label>
                     <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="patron" id="patronType">
@@ -51,6 +58,12 @@
                 <button id="confBorrarTrue">confirmar</button>
                 <button id="confBorrarFalse">cancelar</button>
         </dialog>
+        <dialog id="confClose" class="formulario">
+            <h2>¿Estas seguro que desea cerrar sesión?</h2>
+            <button id="confCloseTrue">confirmar</button>
+            <button id="confCloseFalse">cancelar</button>
+        </dialog>
+
     
         <dialog id="confEditar" class="formulario">
                 <h2>Editar</h2>
